@@ -3,7 +3,6 @@ from Products.CMFCore.utils import getToolByName
 from Products.CMFPlone.interfaces import IMailSchema
 from Products.CMFPlone.interfaces import IMarkupSchema
 from Products.CMFPlone.interfaces import ISecuritySchema
-from Products.CMFPlone.interfaces import ISiteSchema
 from Products.CMFPlone.interfaces import IUserGroupsSettingsSchema
 from Products.CMFPlone.interfaces import ILanguageSchema
 from plone.app.linkintegrity.upgrades import migrate_linkintegrity_relations
@@ -311,11 +310,43 @@ def upgrade_usergroups_controlpanel_settings(context):
                                                           False)
 
 
+def migrate_displayPublicationDateInByline(context):
+    """ Migrate the "display publication date" setting to the configuration
+    registry
+    """
+
+    # get the new registry
+    registry = getUtility(IRegistry)
+
+    # XXX: Somehow this code is executed for old migration steps as well
+    # ( < Plone 4 ) and breaks because there is no registry. Looking up the
+    # registry interfaces with 'check=False' will not work, because it will
+    # return a settings object and then fail when we try to access the
+    # attributes.
+    try:
+        settings = registry.forInterface(IUserGroupsSettingsSchema,
+                                         prefix='plone')
+    except KeyError:
+        settings = False
+    if settings:
+        # get the old site properties
+        portal_url = getToolByName(context, 'portal_url')
+        portal = portal_url.getPortalObject()
+        portal_properties = getToolByName(portal, "portal_properties")
+        site_properties = portal_properties.site_properties
+
+        value = site_properties.getProperty('displayPublicationDateInByline',
+                                            False)
+        settings.display_publication_date_in_byline = value
+
+
 def to50rc1(context):
     """5.0beta4 -> 5.0rc1"""
     loadMigrationProfile(context, 'profile-plone.app.upgrade.v50:to50rc1')
 
     upgrade_usergroups_controlpanel_settings(context)
+    migrate_displayPublicationDateInByline(context)
+
 
     portal = getSite()
     # Migrate settings from portal_properties to the configuration registry
