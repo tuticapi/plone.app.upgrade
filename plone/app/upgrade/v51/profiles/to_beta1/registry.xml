@@ -14,4 +14,8 @@
     <value key="url">++resource++mockup/relateditems</value>
   </records>
 
+  <!-- Add image scaling options to image handling ctrlpanel. -->
+  <records interface="Products.CMFPlone.interfaces.IImagingSchema"
+           prefix="plone" />
+
 </registry>

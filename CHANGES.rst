@@ -10,6 +10,10 @@ Breaking changes:
 
 New features:
 
+- Add image scaling options to image handling controlpanel
+  when migrating to 5.1b1.
+  [didrix]
+
 - Support sites without ``portal_quickinstaller``.
   We use ``get_installer`` in Plone 5.1 migrations.
   In earlier version we will keep using the ``portal_quickinstaller``,

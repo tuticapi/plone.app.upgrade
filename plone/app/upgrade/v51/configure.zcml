@@ -47,6 +47,7 @@ Remove deprecated ``mockup-registry`` and ``mockup-parser`` resources.
            description="
 Update ``last_compilation`` to deliver new bundles,
 Add new Mockup 2.4.0 relateditems resource url.
+Add image scaling options to image handling ctrlpanel.
            "
            handler=".betas.to51beta1"
            />
