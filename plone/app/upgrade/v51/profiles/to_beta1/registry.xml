@@ -17,4 +17,48 @@
   <!-- Add sort_on field to search controlpanel -->
   <records interface="Products.CMFPlone.interfaces.ISearchSchema"
            prefix="plone" />
+
+
+  <!-- remove jsx transformer since this is no longer located in default react package -->
+  <records prefix="plone.resources/JSXTransformer"
+           interface='Products.CMFPlone.interfaces.IResourceRegistry'
+           remove="True" />
+
+
+  <!-- update react and react related dependencies -->
+  <records prefix="plone.resources/react"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++plone++static/components/react/react.min.js</value>
+  </records>
+  <records prefix="plone.resources/react-dom"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++plone++static/components/react/react-dom.min.js</value>
+  </records>
+  <records prefix="plone.resources/react-with-addons"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++plone++static/components/react/react-with-addons.min.js</value>
+  </records>
+  <records prefix="plone.resources/eventEmitter"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++plone++static/components/eventEmitter/EventEmitter.js</value>
+  </records>
+  <records prefix="plone.resources/object-assign"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++resource++mockupjs/object-assign.js</value>
+  </records>
+  <records prefix="plone.resources/dispatcher"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++resource++mockupjs/dispatcher.js</value>
+  </records>
+  <records prefix="plone.resources/es6-promise"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="js">++plone++static/components/es6-promise/es6-promise.js</value>
+  </records>
+
+
+  <!-- qs widget is moved to react, add pattern base url -->
+  <records prefix="plone.resources/mockup-patterns-querystring"
+            interface='Products.CMFPlone.interfaces.IResourceRegistry'>
+      <value key="url">++resource++mockup/querystring</value>
+  </records>
 </registry>
