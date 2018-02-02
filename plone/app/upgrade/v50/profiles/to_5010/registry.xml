@@ -10,4 +10,14 @@
       <value key="js">++plone++static/components/js-shortcuts/js-shortcuts.js</value>
       <value key="deps">jquery</value>
   </records>
+  <records interface="Products.CMFPlone.interfaces.ISecuritySchema"
+           prefix="plone">
+      <record name="editing_url">
+          <field type="plone.registry.field.URI">
+              <title>Editing URL</title>
+              <description>Optional editing URL for this site. If specified, logins will be blocked from other URLs. Use this to require logins and editing from an uncached subdomain, e.g. https://edit.yoursite.com.</description>
+          </field>
+          <value></value>
+      </record>
+  </records>
 </registry>

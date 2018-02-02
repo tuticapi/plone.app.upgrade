@@ -382,4 +382,18 @@
             />
 
     </gs:upgradeSteps>
+
+    <gs:upgradeSteps
+        source="5020"
+        destination="5021"
+        profile="Products.CMFPlone:plone">
+
+       <gs:upgradeStep
+            title="Add editing_url to the registry"
+            description=""
+            handler=".final.to5010"
+            />
+
+    </gs:upgradeSteps>
+
 </configure>

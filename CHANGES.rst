@@ -10,7 +10,8 @@ Breaking changes:
 
 New features:
 
-- *add item here*
+- add editing_url registry and Security setting
+  [tkimnguyen]
 
 Bug fixes:
 
