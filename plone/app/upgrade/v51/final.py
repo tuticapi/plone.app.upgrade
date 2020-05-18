@@ -65,6 +65,6 @@ def remove_old_PAE_rescources(context):  # noqa
         resources.value.remove('resource-plone-app-event-event-css')
 
 
-def to5117(context):
+def to517(context):
     """5.1.6 -> 5.1.7"""
-    loadMigrationProfile(context, 'profile-plone.app.upgrade.v50:to517')
+    loadMigrationProfile(context, 'profile-plone.app.upgrade.v51:to517')
